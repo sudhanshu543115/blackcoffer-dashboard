@@ -1,36 +1,163 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blackcoffer Analytics Dashboard
 
-## Getting Started
+An interactive data visualization dashboard built for the Blackcoffer Software Engineer (Full-stack) Associate take-home assignment.
 
-First, run the development server:
+The application uses the provided JSON dataset, stores the data in MongoDB, exposes analytics through Next.js API routes, and presents the results through an interactive responsive dashboard.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The dashboard provides an analytical view of the supplied intelligence data across multiple dimensions including:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Intensity
+- Likelihood
+- Relevance
+- Year
+- Country
+- Topics
+- Sector
+- Region
+- PESTLE
+- Source
+- SWOT
+- City
 
-## Learn More
+Users can apply multiple filters simultaneously, explore visual trends, search individual records, and navigate through the underlying dataset.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Dashboard Analytics
 
-## Deploy on Vercel
+The dashboard includes:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Total Records KPI
+- Average Intensity
+- Average Likelihood
+- Average Relevance
+- Intensity, Likelihood and Relevance trend by year
+- Top Topics
+- Top Countries
+- Insights by Sector
+- Insights by Region
+- PESTLE distribution
+- Likelihood vs Relevance scatter plot
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Interactive Filters
+
+The following filters are available:
+
+- End Year
+- Topic
+- Sector
+- Region
+- PESTLE
+- Source
+- Country
+- City
+- SWOT
+
+Filters dynamically update the dashboard analytics and data table.
+
+### Insight Data Table
+
+The dashboard also provides access to the underlying records with:
+
+- Search functionality
+- Pagination
+- Applied filter support
+- Intensity, likelihood and relevance values
+- Source information
+- Links to original source URLs
+
+### Other Features
+
+- Responsive design
+- Loading states
+- Error handling
+- Refresh functionality
+- Reset filters functionality
+- MongoDB-backed data
+- Production-ready Next.js build
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Recharts
+- Lucide React
+
+### Backend
+
+- Next.js App Router API Routes
+- Node.js
+- MongoDB
+- Mongoose
+
+### Data
+
+- Provided `jsondata.json` dataset
+
+---
+
+## Project Structure
+
+```text
+blackcoffer-dashboard/
+│
+├── app/
+│   ├── api/
+│   │   ├── analytics/
+│   │   │   └── route.ts
+│   │   ├── filters/
+│   │   │   └── route.ts
+│   │   └── insights/
+│   │       └── route.ts
+│   │
+│   ├── dashboard/
+│   │   └── page.tsx
+│   │
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── components/
+│   └── dashboard/
+│       ├── Header.tsx
+│       ├── FilterBar.tsx
+│       ├── KpiCards.tsx
+│       ├── IntensityChart.tsx
+│       ├── TopicsChart.tsx
+│       ├── CountryChart.tsx
+│       ├── SectorChart.tsx
+│       ├── RegionChart.tsx
+│       ├── PestleChart.tsx
+│       ├── RelevanceScatter.tsx
+│       └── DataTable.tsx
+│
+├── lib/
+│   └── mongodb.ts
+│
+├── models/
+│   └── Insight.ts
+│
+├── scripts/
+│   └── import-data.ts
+│
+├── types/
+│   └── insight.ts
+│
+├── jsondata.json
+├── .env.local
+├── .gitignore
+├── package.json
+├── tsconfig.json
+└── README.md
